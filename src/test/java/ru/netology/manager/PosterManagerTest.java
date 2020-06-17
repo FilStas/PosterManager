@@ -50,6 +50,11 @@ class PosterManagerTest {
         manager.add(eleventh);
         manager.add(twelfth);
 
+        MoviePoster[] actual = manager.getAll();
+        MoviePoster[] expected = new MoviePoster[]{third, second, first, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth};
+
+
     }
+
 
 }

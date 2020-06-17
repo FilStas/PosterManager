@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.MoviePoster;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
 class PosterManagerTest {
     private PosterManager manager = new PosterManager();
     private MoviePoster first = new MoviePoster(11, "https://", "Побег из Шоушенка", 1994, "драма");
@@ -37,24 +39,11 @@ class PosterManagerTest {
 
     @Test
     public void shouldAddMoviesToPoster() {
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
-        manager.add(fourth);
-        manager.add(fifth);
-        manager.add(sixth);
-        manager.add(seventh);
-        manager.add(eighth);
-        manager.add(ninth);
-        manager.add(tenth);
-        manager.add(eleventh);
-        manager.add(twelfth);
 
         MoviePoster[] actual = manager.getAll();
-        MoviePoster[] expected = new MoviePoster[]{third, second, first, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth};
+        MoviePoster[] expected = new MoviePoster[]{twelfth, eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
 
-
+        assertArrayEquals(expected, actual);
     }
-
 
 }

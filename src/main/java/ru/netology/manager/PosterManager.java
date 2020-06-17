@@ -14,7 +14,7 @@ public class PosterManager {
         // for (int i = 0; i < items.length; i++) {
         //   tmp[i] = items[i];
         // }
-        System.arraycopy(posters, 0, tmp, 0, 10);
+        System.arraycopy(posters, 0, tmp, 0, posters.length);
         // кладём последним наш элемент
         int lastIndex = tmp.length - 1;
         tmp[lastIndex] = poster;

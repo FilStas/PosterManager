@@ -37,8 +37,18 @@ class PosterManagerTest {
 
     @Test
     public void shouldAddMoviesToPoster() {
-        int movesToPoster = 12;
-        manager.add();
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
+        manager.add(fifth);
+        manager.add(sixth);
+        manager.add(seventh);
+        manager.add(eighth);
+        manager.add(ninth);
+        manager.add(tenth);
+        manager.add(eleventh);
+        manager.add(twelfth);
 
     }
 

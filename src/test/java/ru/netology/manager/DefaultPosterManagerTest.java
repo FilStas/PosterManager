@@ -6,7 +6,7 @@ import ru.netology.domain.MoviePoster;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-class PosterManagerTest {
+class DefaultPosterManagerTest {
     private PosterManager manager = new PosterManager();
     private MoviePoster first = new MoviePoster(11, "https://", "Побег из Шоушенка", 1994, "драма");
     private MoviePoster second = new MoviePoster(12, "https://", "Зелёная миля", 2000, "фантастика, драма");
@@ -38,10 +38,10 @@ class PosterManagerTest {
     }
 
     @Test
-    public void shouldAddMoviesToPoster() {
+    public void shouldBringOut10FilmsOnPoster() {
 
         MoviePoster[] actual = manager.getAll();
-        MoviePoster[] expected = new MoviePoster[]{twelfth, eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
+        MoviePoster[] expected = new MoviePoster[]{twelfth, eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third};
 
         assertArrayEquals(expected, actual);
     }

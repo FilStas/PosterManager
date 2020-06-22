@@ -6,7 +6,7 @@ import ru.netology.domain.MoviePoster;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class PosterIsEmptyTest {
-    private PosterManager manager = new PosterManager();
+    private AfishaManager manager = new AfishaManager();
 
     @Test
     public void shouldPrintBlankPoster() {

@@ -2,7 +2,7 @@ package ru.netology.manager;
 
 import ru.netology.domain.MoviePoster;
 
-public class PosterManager {
+public class AfishaManager {
 
     private MoviePoster[] posters = new MoviePoster[0];
 

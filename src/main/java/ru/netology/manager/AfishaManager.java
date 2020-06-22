@@ -1,14 +1,14 @@
 package ru.netology.manager;
 
-import ru.netology.domain.MoviePoster;
+import ru.netology.domain.PosterMovie;
 
 public class AfishaManager {
 
-    private MoviePoster[] posters = new MoviePoster[0];
+    private PosterMovie[] posters = new PosterMovie[0];
 
-    public void add(MoviePoster poster) {
+    public void add(PosterMovie poster) {
         int length = posters.length + 1;
-        MoviePoster[] tmp = new MoviePoster[length];
+        PosterMovie[] tmp = new PosterMovie[length];
 
         System.arraycopy(posters, 0, tmp, 0, posters.length);
 
@@ -17,13 +17,13 @@ public class AfishaManager {
         posters = tmp;
     }
 
-    public MoviePoster[] getAll() {
+    public PosterMovie[] getAll() {
         int defaultPoster = 10;
         int customPorter = posters.length;
-        MoviePoster[] result = new MoviePoster[defaultPoster];
+        PosterMovie[] result = new PosterMovie[defaultPoster];
 
         if (customPorter < defaultPoster){
-            result = new MoviePoster[posters.length];
+            result = new PosterMovie[posters.length];
         }
         for (int i = 0; i < result.length; i++) {
             int index = posters.length - i - 1;

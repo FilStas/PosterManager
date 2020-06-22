@@ -2,24 +2,24 @@ package ru.netology.manager;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.netology.domain.MoviePoster;
+import ru.netology.domain.PosterMovie;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class DefaultAfishaManagerTest {
     private AfishaManager manager = new AfishaManager();
-    private MoviePoster first = new MoviePoster(11, "https://", "Побег из Шоушенка", 1994, "драма");
-    private MoviePoster second = new MoviePoster(12, "https://", "Зелёная миля", 2000, "фантастика, драма");
-    private MoviePoster third = new MoviePoster(13, "https://", "Форрест Гамп", 1994, "драма, мелодрама");
-    private MoviePoster fourth = new MoviePoster(14, "https://", "Список Шиндлера", 1994, "драма, биография");
-    private MoviePoster fifth = new MoviePoster(15, "https://", "1 + 1", 2012, "драма, комедия");
-    private MoviePoster sixth = new MoviePoster(16, "https://", "Иван Васильевич меняет профессию", 1973, "фантастика, комедия");
-    private MoviePoster seventh = new MoviePoster(17, "https://", "Крестный отец", 1972, "драма");
-    private MoviePoster eighth = new MoviePoster(18, "https://", "В бой идут одни старики", 1974, "драма, комедия");
-    private MoviePoster ninth = new MoviePoster(19, "https://", "Операция Ы и другие приключения Шурика", 1965, "мелодрама, комедия");
-    private MoviePoster tenth = new MoviePoster(20, "https://", "Леон", 1994, "боевик, триллер");
-    private MoviePoster eleventh = new MoviePoster(21, "https://", "Начало", 2010, "фантастика, боевик");
-    private MoviePoster twelfth = new MoviePoster(22, "https://", "Бойцовский клуб", 2000, "триллер, драма");
+    private PosterMovie first = new PosterMovie(11, "https://", "Побег из Шоушенка", 1994, "драма");
+    private PosterMovie second = new PosterMovie(12, "https://", "Зелёная миля", 2000, "фантастика, драма");
+    private PosterMovie third = new PosterMovie(13, "https://", "Форрест Гамп", 1994, "драма, мелодрама");
+    private PosterMovie fourth = new PosterMovie(14, "https://", "Список Шиндлера", 1994, "драма, биография");
+    private PosterMovie fifth = new PosterMovie(15, "https://", "1 + 1", 2012, "драма, комедия");
+    private PosterMovie sixth = new PosterMovie(16, "https://", "Иван Васильевич меняет профессию", 1973, "фантастика, комедия");
+    private PosterMovie seventh = new PosterMovie(17, "https://", "Крестный отец", 1972, "драма");
+    private PosterMovie eighth = new PosterMovie(18, "https://", "В бой идут одни старики", 1974, "драма, комедия");
+    private PosterMovie ninth = new PosterMovie(19, "https://", "Операция Ы и другие приключения Шурика", 1965, "мелодрама, комедия");
+    private PosterMovie tenth = new PosterMovie(20, "https://", "Леон", 1994, "боевик, триллер");
+    private PosterMovie eleventh = new PosterMovie(21, "https://", "Начало", 2010, "фантастика, боевик");
+    private PosterMovie twelfth = new PosterMovie(22, "https://", "Бойцовский клуб", 2000, "триллер, драма");
 
     @BeforeEach
     public void setUp() {
@@ -40,8 +40,8 @@ class DefaultAfishaManagerTest {
     @Test
     public void shouldBringOut10FilmsOnPoster() {
 
-        MoviePoster[] actual = manager.getAll();
-        MoviePoster[] expected = new MoviePoster[]{twelfth, eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third};
+        PosterMovie[] actual = manager.getAll();
+        PosterMovie[] expected = new PosterMovie[]{twelfth, eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third};
 
         assertArrayEquals(expected, actual);
     }

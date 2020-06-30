@@ -13,4 +13,5 @@ public class PosterMovie {
     private String name;
     private int year;
     private String genre;
+
 }

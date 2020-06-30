@@ -34,12 +34,13 @@ public class AfishaRepository {
     }
 
     public void findById(int id) {
-        int length = movies.length;
+        int length = movies.length - 1;
         PosterMovie[] tmp = new PosterMovie[length];
         int index = 0;
         for (PosterMovie movie : movies) {
             if (movie.getId() == id) {
                 tmp[index] = movie;
+
                 index++;
             }
         }
@@ -48,12 +49,12 @@ public class AfishaRepository {
 
     public void removeAll() {
         int length = movies.length;
-        PosterMovie[] tmp = new PosterMovie[length];
+        PosterMovie[] tmp = new PosterMovie[0];
         int index = 0;
         for (PosterMovie movie : movies) {
             tmp[index] = movie;
-            index++;
         }
         movies = tmp;
+
     }
 }

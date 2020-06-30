@@ -2,12 +2,23 @@ package ru.netology.manager;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import ru.netology.domain.PosterMovie;
+import ru.netology.repository.AfishaRepository;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.mockito.Mockito.*;
 
-class DefaultAfishaManagerTest {
-    private AfishaManager manager = new AfishaManager();
+@ExtendWith(MockitoExtension.class)
+class AfishaManagerTestAddAndSave {
+    @Mock
+    private AfishaRepository repository;
+
+    @InjectMocks
+    private AfishaManager manager;
     private PosterMovie first = new PosterMovie(11, "https://", "Побег из Шоушенка", 1994, "драма");
     private PosterMovie second = new PosterMovie(12, "https://", "Зелёная миля", 2000, "фантастика, драма");
     private PosterMovie third = new PosterMovie(13, "https://", "Форрест Гамп", 1994, "драма, мелодрама");
@@ -23,9 +34,6 @@ class DefaultAfishaManagerTest {
 
     @BeforeEach
     public void setUp() {
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
         manager.add(fourth);
         manager.add(fifth);
         manager.add(sixth);
@@ -39,11 +47,15 @@ class DefaultAfishaManagerTest {
 
     @Test
     public void shouldBringOut10FilmsOnPoster() {
+        PosterMovie[] returned = new PosterMovie[]{third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth};
+        doReturn(returned). when(repository). findAll();
+        doNothing().when(repository).save(third);
 
-        PosterMovie[] actual = manager.getAll();
+        manager.add(third);
         PosterMovie[] expected = new PosterMovie[]{twelfth, eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third};
-
+        PosterMovie[] actual = manager.getAll();
         assertArrayEquals(expected, actual);
+        verify(repository).save(third);
     }
 
 }

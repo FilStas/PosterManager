@@ -48,13 +48,6 @@ public class AfishaRepository {
     }
 
     public void removeAll() {
-        int length = movies.length;
-        PosterMovie[] tmp = new PosterMovie[0];
-        int index = 0;
-        for (PosterMovie movie : movies) {
-            tmp[index] = movie;
-        }
-        movies = tmp;
-
+        movies = new PosterMovie[0];
     }
 }

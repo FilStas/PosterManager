@@ -52,4 +52,18 @@ public class AfishaManagerTestRemoveToId {
         assertArrayEquals(expected, actual);
         verify(repository).removeById(removeToId);
     }
+
+    @Test
+    public void shouldRemoveIfEx() {
+        int removeToId = 17;
+        PosterMovie[] returned = new PosterMovie[]{fourth, fifth};
+        doReturn(returned).when(repository).findAll();
+        doNothing().when(repository).removeById(removeToId);
+
+        manager.removeById(removeToId);
+        PosterMovie[] expected = new PosterMovie[]{fifth, fourth};
+        PosterMovie[] actual = manager.getAll();
+        assertArrayEquals(expected, actual);
+        verify(repository).removeById(removeToId);
+    }
 }

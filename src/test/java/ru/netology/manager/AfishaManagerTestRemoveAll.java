@@ -40,8 +40,8 @@ public class AfishaManagerTestRemoveAll {
     }
 
     @Test
-    public void shouldRemoveIfExists() {
-        PosterMovie[] returned = new PosterMovie[]{fifth, sixth};
+    public void shouldRemoveAll() {
+        PosterMovie[] returned = new PosterMovie[]{};
         doReturn(returned).when(repository).findAll();
         doNothing().when(repository).removeAll();
 

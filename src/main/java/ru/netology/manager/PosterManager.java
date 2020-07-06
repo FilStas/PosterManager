@@ -3,6 +3,15 @@ package ru.netology.manager;
 import ru.netology.domain.MoviePoster;
 
 public class PosterManager {
+    private int defaultPoster = 10;
+    private int customPoster;
+
+    public PosterManager(int customPoster) {
+        this.customPoster = customPoster;
+    }
+
+    public PosterManager() {
+    }
 
     private MoviePoster[] posters = new MoviePoster[0];
 
@@ -18,18 +27,17 @@ public class PosterManager {
     }
 
     public MoviePoster[] getAll() {
-        int defaultPoster = 10;
-        int customPorter = posters.length;
-        MoviePoster[] result = new MoviePoster[defaultPoster];
-
-        if (customPorter < defaultPoster){
-            result = new MoviePoster[posters.length];
+        int movieCount = posters.length;
+        if ((defaultPoster < posters.length) && (customPoster == 0)) {
+            movieCount = defaultPoster;
+        } else if ((customPoster > 0) && (customPoster < posters.length)) {
+            movieCount = customPoster;
         }
-        for (int i = 0; i < result.length; i++) {
+        MoviePoster[] result = new MoviePoster[movieCount];
+        for (int i = 0; i < movieCount; i++) {
             int index = posters.length - i - 1;
             result[i] = posters[index];
         }
         return result;
     }
-
 }

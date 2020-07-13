@@ -25,6 +25,8 @@ public class MoviePosterIsSmallerThanDefaultTest {
 
     @Test
     public void shouldBring5FilmsToPoster(){
+int custom = 5;
+
         MoviePoster[] actual = manager.getAll();
         MoviePoster[] expected = new MoviePoster[]{fifth, fourth, third, second, first};
 

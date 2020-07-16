@@ -28,9 +28,9 @@ public class PosterManager {
 
     public MoviePoster[] getAll() {
         int movieCount = posters.length;
-        if ((defaultPoster < posters.length) && (customPoster == 0)) {
+        if (defaultPoster <= posters.length & customPoster == 0) {
             movieCount = defaultPoster;
-        } else if ((customPoster > 0) && (customPoster < posters.length)) {
+        } else if (customPoster > 0 & customPoster < posters.length) {
             movieCount = customPoster;
         }
         MoviePoster[] result = new MoviePoster[movieCount];

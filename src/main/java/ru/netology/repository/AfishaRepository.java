@@ -33,18 +33,17 @@ public class AfishaRepository {
         movies = tmp;
     }
 
-    public void findById(int id) {
-        int length = movies.length - 1;
-        PosterMovie[] tmp = new PosterMovie[length];
+    public PosterMovie[] findById(int id) {
+        PosterMovie[] tmp = new PosterMovie[0];
         int index = 0;
         for (PosterMovie movie : movies) {
             if (movie.getId() == id) {
+                tmp = new PosterMovie[1];
                 tmp[index] = movie;
-
                 index++;
             }
         }
-        movies = tmp;
+        return tmp;
     }
 
     public void removeAll() {

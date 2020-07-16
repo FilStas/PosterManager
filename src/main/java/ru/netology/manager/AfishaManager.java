@@ -26,13 +26,14 @@ public class AfishaManager {
 
     public PosterMovie[] getAll() {
         PosterMovie[] movies = repository.findAll();
-        int defaultPoster = 10;
-        int customPorter = movies.length;
-        PosterMovie[] result = new PosterMovie[defaultPoster];
-
-        if (customPorter < defaultPoster) {
-            result = new PosterMovie[movies.length];
+        int movieCount = movies.length;
+        if (defaultPoster <= movies.length & customPoster == 0) {
+            movieCount = defaultPoster;
+        } else if (customPoster > 0 & customPoster < movies.length) {
+            movieCount = customPoster;
         }
+        PosterMovie[] result = new PosterMovie[movieCount];
+
         for (int i = 0; i < result.length; i++) {
             int index = movies.length - i - 1;
             result[i] = movies[index];
@@ -44,8 +45,8 @@ public class AfishaManager {
         repository.removeById(id);
     }
 
-    public void findById(int id) {
-        repository.findById(id);
+    public PosterMovie[] findById(int id) {
+       return repository.findById(id);
     }
 
     public void removeAll() {

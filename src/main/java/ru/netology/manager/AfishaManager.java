@@ -4,11 +4,20 @@ import ru.netology.domain.PosterMovie;
 import ru.netology.repository.AfishaRepository;
 
 public class AfishaManager {
-
+    private int defaultPoster = 10;
+    private int customPoster;
     private AfishaRepository repository;
 
     public AfishaManager(AfishaRepository repository) {
         this.repository = repository;
+    }
+
+    public AfishaManager(int customPoster, AfishaRepository repository) {
+        this.customPoster = customPoster;
+        this.repository = repository;
+    }
+
+    public AfishaManager() {
     }
 
     public void add(PosterMovie movie) {
@@ -31,7 +40,7 @@ public class AfishaManager {
         return result;
     }
 
-    public void removeById(int id){
+    public void removeById(int id) {
         repository.removeById(id);
     }
 

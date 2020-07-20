@@ -51,6 +51,45 @@ class AfishaManagerTest {
     }
 
     @Test
+    void shouldAddMoviesCustomLength() {
+        AfishaManager manager = new AfishaManager(3, repository);
+        PosterMovie[] returned = new PosterMovie[]{first, second, third, fourth, fifth,};
+        doReturn(returned).when(repository).findAll();
+
+        PosterMovie[] expected = new PosterMovie[]{fifth, fourth, third};
+        PosterMovie[] actual = manager.getAll();
+
+        assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    void shouldAddFilmsLessThanCustomLength() {
+        AfishaManager manager = new AfishaManager(5, repository);
+        PosterMovie[] returned = new PosterMovie[]{first, second, third};
+        doReturn(returned).when(repository).findAll();
+
+        PosterMovie[] expected = new PosterMovie[]{third, second, first};
+        PosterMovie[] actual = manager.getAll();
+
+        assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    void shouldAddFilmsAsManyAsThereAre() {
+        AfishaManager manager = new AfishaManager(repository);
+        PosterMovie[] returned = new PosterMovie[]{eighth, ninth, tenth, eleventh, twelfth};
+        doReturn(returned).when(repository).findAll();
+
+        PosterMovie[] expected = new PosterMovie[]{twelfth, eleventh, tenth, ninth, eighth};
+        PosterMovie[] actual = manager.getAll();
+
+        assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
     void shouldAddMoviesAndRevertBackToDefault() {
         PosterMovie[] movies = new PosterMovie[]{first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth};
         doReturn(movies).when(repository).findAll();
@@ -86,7 +125,7 @@ class AfishaManagerTest {
         PosterMovie expected = fifth;
         PosterMovie actual = manager.findById(movieId);
 
-       assertEquals (expected, actual);
+        assertEquals(expected, actual);
         verify(repository).findById(movieId);
     }
 

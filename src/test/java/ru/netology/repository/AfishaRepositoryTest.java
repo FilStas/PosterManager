@@ -1,24 +1,13 @@
-package ru.netology.manager;
+package ru.netology.repository;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import ru.netology.domain.PosterMovie;
-import ru.netology.repository.AfishaRepository;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(MockitoExtension.class)
-class AfishaManagerTestAddAndSave {
-    @Mock
-    private AfishaRepository repository;
-
-    @InjectMocks
-    private AfishaManager manager;
+class AfishaRepositoryTest {
+    private AfishaRepository repository = new AfishaRepository();
     private PosterMovie first = new PosterMovie(11, "https://", "Побег из Шоушенка", 1994, "драма");
     private PosterMovie second = new PosterMovie(12, "https://", "Зелёная миля", 2000, "фантастика, драма");
     private PosterMovie third = new PosterMovie(13, "https://", "Форрест Гамп", 1994, "драма, мелодрама");
@@ -34,28 +23,56 @@ class AfishaManagerTestAddAndSave {
 
     @BeforeEach
     public void setUp() {
-        manager.add(fourth);
-        manager.add(fifth);
-        manager.add(sixth);
-        manager.add(seventh);
-        manager.add(eighth);
-        manager.add(ninth);
-        manager.add(tenth);
-        manager.add(eleventh);
-        manager.add(twelfth);
+        repository.save(fourth);
+        repository.save(fifth);
+        repository.save(sixth);
+        repository.save(seventh);
+        repository.save(eighth);
+        repository.save(ninth);
+        repository.save(tenth);
+        repository.save(eleventh);
+        repository.save(twelfth);
     }
 
     @Test
-    public void shouldBringOut10FilmsOnPoster() {
-        PosterMovie[] returned = new PosterMovie[]{third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth};
-        doReturn(returned). when(repository). findAll();
-        doNothing().when(repository).save(third);
+    void shouldSave() {
+        PosterMovie[] actual = repository.findAll();
+        PosterMovie[] expected = new PosterMovie[]{fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth};
 
-        manager.add(third);
-        PosterMovie[] expected = new PosterMovie[]{twelfth, eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third};
-        PosterMovie[] actual = manager.getAll();
-        assertArrayEquals(expected, actual);
-        verify(repository).save(third);
+        assertArrayEquals(actual, expected);
+
     }
 
+    @Test
+    void shouldRemoveById() {
+        int idToRemove = 18;
+        repository.removeById(idToRemove);
+
+        PosterMovie[] actual = repository.findAll();
+        PosterMovie[] expected = new PosterMovie[]{fourth, fifth, sixth, seventh, ninth, tenth, eleventh, twelfth};
+
+        assertArrayEquals(actual, expected);
+
+
+    }
+
+    @Test
+    void shouldFindById() {
+        int idMovie = 21;
+
+        PosterMovie actual = repository.findById(idMovie);
+        PosterMovie expected = eleventh;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldRemoveAll() {
+        repository.removeAll();
+
+        PosterMovie[] actual = repository.findAll();
+        PosterMovie[] expected = new PosterMovie[]{};
+
+        assertArrayEquals(actual, expected);
+    }
 }

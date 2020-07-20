@@ -45,7 +45,7 @@ public class AfishaManager {
         repository.removeById(id);
     }
 
-    public PosterMovie[] findById(int id) {
+    public PosterMovie findById(int id) {
        return repository.findById(id);
     }
 

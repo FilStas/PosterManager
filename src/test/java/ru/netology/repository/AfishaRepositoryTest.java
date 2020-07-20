@@ -60,10 +60,10 @@ class AfishaRepositoryTest {
     void shouldFindById() {
         int idMovie = 21;
 
-        PosterMovie[] actual = repository.findById(idMovie);
-        PosterMovie[] expected = new PosterMovie[]{eleventh};
+        PosterMovie actual = repository.findById(idMovie);
+        PosterMovie expected = eleventh;
 
-        assertArrayEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test

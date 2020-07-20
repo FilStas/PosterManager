@@ -33,14 +33,11 @@ public class AfishaRepository {
         movies = tmp;
     }
 
-    public PosterMovie[] findById(int id) {
-        PosterMovie[] tmp = new PosterMovie[0];
-        int index = 0;
+    public PosterMovie findById(int id) {
+        PosterMovie tmp = null;
         for (PosterMovie movie : movies) {
             if (movie.getId() == id) {
-                tmp = new PosterMovie[1];
-                tmp[index] = movie;
-                index++;
+                tmp = movie;
             }
         }
         return tmp;

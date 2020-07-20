@@ -10,6 +10,7 @@ import ru.netology.domain.PosterMovie;
 import ru.netology.repository.AfishaRepository;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
@@ -62,7 +63,7 @@ class AfishaManagerTest {
     }
 
     @Test
-    void removeById() {
+    void shouldRemoveById() {
         int moveId = 15;
         PosterMovie[] movies = new PosterMovie[]{first, second, third, fourth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth};
         doReturn(movies).when(repository).findAll();
@@ -77,20 +78,20 @@ class AfishaManagerTest {
 
 
     @Test
-    void findById() {
+    void shouldFindById() {
         int movieId = 15;
-        PosterMovie[] returned = new PosterMovie[]{fifth};
+        PosterMovie returned = fifth;
         doReturn(returned).when(repository).findById(movieId);
 
-        PosterMovie[] expected = new PosterMovie[]{fifth};
-        PosterMovie[] actual = manager.findById(movieId);
+        PosterMovie expected = fifth;
+        PosterMovie actual = manager.findById(movieId);
 
-        assertArrayEquals(expected, actual);
+       assertEquals (expected, actual);
         verify(repository).findById(movieId);
     }
 
     @Test
-    void removeAll() {
+    void shouldRemoveAll() {
         PosterMovie[] returned = new PosterMovie[]{};
         doReturn(returned).when(repository).findAll();
 
